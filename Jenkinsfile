@@ -13,9 +13,8 @@ pipeline {
                 script {
                     def scannerHome = tool 'SonarQube-Scanner'
                     withSonarQubeEnv('SonarQube-Server') {
-                        // Pass JAVA_HOME directly to the scanner script
                         bat """
-                            set "JAVA_HOME=C:\\Program Files\\Java\\jdk-25"
+                            set "JAVA_HOME=C:\\Program Files\\Java\\jdk-25.0.3"
                             "%JAVA_HOME%\\bin\\java" -version
                             "${scannerHome}\\bin\\sonar-scanner.bat" -Dsonar.projectKey=sast-demo -Dsonar.projectName=sast-demo -Dsonar.sources=src/main/java -Dsonar.java.binaries=.
                         """
